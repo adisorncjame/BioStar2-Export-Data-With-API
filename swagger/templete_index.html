@@ -1,0 +1,81 @@
+<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Biostar 2 Api</title>
+  <link rel="stylesheet" type="text/css" href="./swagger-ui.css">
+  <link rel="shortcut icon" href="../images/favicon.ico"/>
+  <style>
+    html {
+      box-sizing: border-box;
+      overflow: -moz-scrollbars-vertical;
+      overflow-y: scroll;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    body {
+      margin: 0;
+      background: #fafafa;
+    }
+  </style>
+</head>
+
+<body>
+<div id="swagger-ui"></div>
+<script src="./swagger-ui-bundle.js"></script>
+<script src="./swagger-ui-standalone-preset.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+
+  window.onload = async function () {
+    let sid = window.location.search.match(/sid=([^&]+)/);
+    if (sid && sid.length > 1) {
+      sid = decodeURIComponent(sid[1]);
+    }
+    let readJson = function (name ) {
+      return new Promise((resolve, reject) => {
+        $.getJSON( name, (data)=>{
+          resolve(data);
+        })
+      });
+    }
+    let data = ####swagger.json;
+    //let data = await readJson("../../swagger_api/4.working/swaggerDescription/swagger.json");
+    const ui = SwaggerUIBundle({
+      spec: data,
+      dom_id: '#swagger-ui',
+      deepLinking: true,
+      filter:true,
+      defaultModelsExpandDepth: -1,
+      defaultModelExpandDepth: 10,
+      //operationsSorter: ((a)=>a),
+      //showExtensions : true,
+      defaultModelRendering: "example", //"model",//"example",
+      presets: [
+        SwaggerUIBundle.presets.apis,
+        SwaggerUIStandalonePreset.slice(1) // here
+        //SwaggerUIStandalonePreset
+      ],
+      plugins: [
+        SwaggerUIBundle.plugins.DownloadUrl
+      ],
+      layout: "StandaloneLayout",
+
+      onComplete: () => {
+        if (sid && sid.length > 1) {
+          ui.preauthorizeApiKey("bs-session-id", sid);
+        }
+      }
+    })
+
+    window.ui = ui
+  }
+</script>
+</body>
+</html>
