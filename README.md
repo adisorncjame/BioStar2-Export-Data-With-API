@@ -68,6 +68,31 @@ Below are cases where sessions are invalid:
 4. A session timeout happens.
 
 
+Config POSTMAN Test Api BioStar 2
+
+[ Login Get bs-session-id ]
+
+![image](https://user-images.githubusercontent.com/62010897/233257409-d6ce677a-63e2-40c3-867d-9e4a9f73183a.png)
+
+![image](https://user-images.githubusercontent.com/62010897/233257380-7f15782f-161d-40df-b5e3-469029a04db9.png)
+
+![image](https://user-images.githubusercontent.com/62010897/233257158-5ff506db-e3ed-4685-8a47-3e9f3296a3fa.png)
+
+Copy > bs-session-id
+
+[ Get Event Logs ]
+
+![image](https://user-images.githubusercontent.com/62010897/233257662-fad9f15d-8a26-4b07-bebc-1fd9fcc187cc.png)
+
+![image](https://user-images.githubusercontent.com/62010897/233257614-49b0aac8-0029-4b14-8030-e43d7e8ef904.png)
+
+
+HTTPS ERROR STATUS > https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#information_responses
+
+
+
+
+
 
 
 
